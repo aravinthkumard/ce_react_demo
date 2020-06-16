@@ -1,0 +1,49 @@
+sudo apt-get -y update
+
+sudo apt-get install -y nodejs npm
+
+sudo ln -s /usr/bin/nodejs /usr/bin/node
+
+sudo apt-get install git
+
+git clone 
+
+cd ce_react_demo
+
+npm install
+
+sudo npm install -g gulp
+
+sudo apt-get install -y nginx
+
+curl localhost
+
+cd /etc/nginx/sites-available
+
+sudo mv default default.bak
+
+sudo touch default
+
+server {
+  listen 80;
+  server_name YOUR_SERVERS_IP_ADDRESS;
+
+  location / {
+    proxy_pass "http://127.0.0.1:8080";
+    proxy_http_version 1.1;
+    proxy_set_header Upgrade $http_upgrade;
+    proxy_set_header Connection 'upgrade';
+    proxy_cache_bypass $http_upgrade;
+  }
+}
+
+
+sudo service nginx restart
+
+cd ~/ce_react_demo
+
+sudo npm install -g pm2
+
+npm run build-prod
+
+pm2 start pm2config.json
